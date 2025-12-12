@@ -1,11 +1,7 @@
-import { useMemo } from "react";
 import { FaHamburger } from "react-icons/fa";
 
-export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart }) {
-  // State derivado
-  const isEmpty = cart.length === 0;
-  const cartTotal = useMemo(() => cart.reduce( (total, item) => total + (item.price * item.quantity), 0 ), [cart]);
-
+export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, isEmpty, cartTotal }) {
+  
   return (
     <header className="py-5 header">
       <div className="container-xl">
