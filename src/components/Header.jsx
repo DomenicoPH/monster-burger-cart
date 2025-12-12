@@ -26,7 +26,7 @@ export default function Header({ cart, removeFromCart, increaseQuantity, decreas
 
               <div id="carrito" className="bg-white p-3">
                 {isEmpty ? (
-                  <p className="text-center">El carrito esta vacio</p>
+                  <p className="text-center">The cart is empty</p>
                 ) : (
                   <>
                     <table className="w-100 table">
@@ -91,7 +91,7 @@ export default function Header({ cart, removeFromCart, increaseQuantity, decreas
                   className="btn btn-dark w-100 mt-3 p-2"
                   onClick={clearCart}
                 >
-                  Vaciar Carrito
+                  Empty Cart
                 </button>
               </div>
             </div>
