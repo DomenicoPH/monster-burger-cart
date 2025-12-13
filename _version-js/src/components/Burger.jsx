@@ -1,6 +1,6 @@
 import { FiShoppingCart } from "react-icons/fi";
 
-export default function Guitar({burger, addToCart}){
+export default function Burger({burger, addToCart}){
 
     const {id, name, image, description, price} = burger;
 
