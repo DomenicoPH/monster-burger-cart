@@ -1,6 +1,17 @@
 import { FaHamburger } from "react-icons/fa";
+import type { CartItem, Burger } from "../types/types";
 
-export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, isEmpty, cartTotal }) {
+type HeaderProps = {
+  cart: CartItem[];
+  removeFromCart: (id: Burger['id']) => void;
+  decreaseQuantity: (id: Burger['id']) => void;
+  increaseQuantity: (id: Burger['id']) => void;
+  clearCart: () => void;
+  isEmpty: boolean;
+  cartTotal: number;
+}
+
+export default function Header({ cart, removeFromCart, decreaseQuantity, increaseQuantity, clearCart, isEmpty, cartTotal } : HeaderProps) {
   
   return (
     <header className="py-5 header">

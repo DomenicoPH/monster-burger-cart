@@ -1,4 +1,6 @@
-export const db = [
+import type { Burger } from "../types/types";
+
+export const db : Burger[] = [
   {
     id: 1,
     name: "The Vampire Crunch",

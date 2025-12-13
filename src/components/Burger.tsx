@@ -1,8 +1,14 @@
 import { FiShoppingCart } from "react-icons/fi";
+import type { Burger } from "../types/types";
 
-export default function Guitar({burger, addToCart}){
+type BurgerProps = {
+    burger: Burger;
+    addToCart: (item: Burger) => void;
+}
 
-    const {id, name, image, description, price} = burger;
+export default function Burger({burger, addToCart} : BurgerProps){
+
+    const { name, image, description, price } = burger;
 
     return(
         <div className="col-md-6 col-lg-4 my-4 col align-items-center">
