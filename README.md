@@ -45,3 +45,15 @@ Clonar el repositorio e instalar dependencias:
 ```bash
 npm install
 npm run dev
+```
+
+## Licencia
+
+Este proyecto es de uso libre con fines educativos y demostrativos.
+
+---
+
+**Domenico Pagano <dpaganoh@gmail.com>**  
+
+Desarrollado como proyecto de práctica y portfolio frontend.  
+💼 [Domenico Pagano Portafolio](https://portfolio-gnomono.vercel.app/)
