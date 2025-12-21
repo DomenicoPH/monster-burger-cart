@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo } from "react"
-import { db } from "../data/db.ts"
 import type { Burger, CartItem } from "../types/types.ts"
 
 export const useCart = () => {
@@ -9,7 +8,6 @@ export const useCart = () => {
       return localStorageCart ? JSON.parse(localStorageCart) : [];
     }
 
-    const [data] = useState(db);
     const [cart, setCart] = useState(initialCart);
 
     const MIN_ITEMS = 1;
@@ -73,7 +71,6 @@ export const useCart = () => {
 
     // return
     return {
-      data,
       cart,
       addToCart,
       removeFromCart,
