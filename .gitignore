@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Versiones anteriores
+_version-js
+_version-ts-customHook
