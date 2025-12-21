@@ -3,10 +3,13 @@ import Burger from "./components/Burger"
 import Header from "./components/Header"
 //hooks
 import { useCart } from "./hooks/useCart.ts"
+import { useReducer } from "react"
+import { cartReducer, initialState } from "./reducers/cart-reducer.ts"
 
 function App() {
 
   const { data, cart, addToCart, removeFromCart, decreaseQuantity, increaseQuantity, clearCart, isEmpty, cartTotal } = useCart()
+  const [ state, dispatch ] = useReducer(cartReducer, initialState)
 
   return (
     <>
