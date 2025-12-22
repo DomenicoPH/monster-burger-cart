@@ -2,12 +2,16 @@ import Footer from "./components/Footer"
 import Burger from "./components/Burger"
 import Header from "./components/Header"
 //reducer
-import { useReducer } from "react"
+import { useReducer, useEffect } from "react"
 import { cartReducer, initialState } from "./reducers/cart-reducer.ts"
 
 function App() {
 
-  const [ state, dispatch ] = useReducer(cartReducer, initialState)
+  const [ state, dispatch ] = useReducer(cartReducer, initialState);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(state.cart));
+  }, [state.cart]);
 
   return (
     <>
@@ -38,4 +42,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
