@@ -32,7 +32,7 @@ function App() {
               <Burger 
                 key={burger.id}
                 burger={burger}
-                addToCart={addToCart}
+                dispatch={dispatch}
               />
             ))}
           </div>

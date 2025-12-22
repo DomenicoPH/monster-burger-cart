@@ -1,12 +1,14 @@
 import { FiShoppingCart } from "react-icons/fi";
 import type { Burger } from "../types/types";
+import type { CartActions } from "../reducers/cart-reducer";
+import type { ActionDispatch } from "react";
 
 type BurgerProps = {
     burger: Burger;
-    addToCart: (item: Burger) => void;
+    dispatch: ActionDispatch<[action: CartActions]>
 }
 
-export default function Burger({burger, addToCart} : BurgerProps){
+export default function Burger({burger, dispatch} : BurgerProps){
 
     const { name, image, description, price } = burger;
 
@@ -22,7 +24,7 @@ export default function Burger({burger, addToCart} : BurgerProps){
                 <button 
                     type="button"
                     className="btn btn-dark w-100"
-                    onClick={() => addToCart(burger)}
+                    onClick={() => dispatch({type: 'add-to-cart', payload: {item: burger}})}
                 >Agregar al Carrito <FiShoppingCart /></button>
             </div>
         </div>
