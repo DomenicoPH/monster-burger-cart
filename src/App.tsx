@@ -1,14 +1,12 @@
 import Footer from "./components/Footer"
 import Burger from "./components/Burger"
 import Header from "./components/Header"
-//hooks
-import { useCart } from "./hooks/useCart.ts"
+//reducer
 import { useReducer } from "react"
 import { cartReducer, initialState } from "./reducers/cart-reducer.ts"
 
 function App() {
 
-  const { clearCart } = useCart()
   const [ state, dispatch ] = useReducer(cartReducer, initialState)
 
   return (
@@ -16,7 +14,6 @@ function App() {
       <Header
         cart={state.cart}
         dispatch={dispatch}
-        clearCart={clearCart}
       />
 
       <main className="container-xl mt-5">

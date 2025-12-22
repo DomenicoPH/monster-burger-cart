@@ -6,7 +6,7 @@ export type CartActions =
     { type: 'remove-from-cart', payload: {id : Burger['id']} } |
     { type: 'decrease-quantity', payload: {id : Burger['id']} } |
     { type: 'increase-quantity', payload: {id : Burger['id']} } |
-    { type: 'clean-cart' }
+    { type: 'clear-cart' }
 
 export type CartState = {
     data: Burger[],
@@ -99,9 +99,10 @@ export const cartReducer = (
             }
         }
 
-        if(action.type === 'clean-cart'){
+        if(action.type === 'clear-cart'){
             return {
-                ...state
+                ...state,
+                cart: []
             }
         }
 
