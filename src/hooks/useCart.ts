@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect } from "react"
 import type { Burger, CartItem } from "../types/types.ts"
 
 export const useCart = () => {
@@ -51,10 +51,6 @@ export const useCart = () => {
       setCart([]);
     };
 
-    // State derivado
-    const isEmpty = cart.length === 0;
-    const cartTotal = useMemo(() => cart.reduce( (total, item) => total + (item.price * item.quantity), 0 ), [cart]);
-
     // return
     return {
       cart,
@@ -62,8 +58,6 @@ export const useCart = () => {
       decreaseQuantity,
       increaseQuantity,
       clearCart,
-      isEmpty,
-      cartTotal
     }
 
 }

@@ -1,5 +1,6 @@
 import { FaHamburger } from "react-icons/fa";
 import type { CartItem, Burger } from "../types/types";
+import { useMemo } from "react";
 
 type HeaderProps = {
   cart: CartItem[];
@@ -7,12 +8,14 @@ type HeaderProps = {
   decreaseQuantity: (id: Burger['id']) => void;
   increaseQuantity: (id: Burger['id']) => void;
   clearCart: () => void;
-  isEmpty: boolean;
-  cartTotal: number;
 }
 
-export default function Header({ cart, removeFromCart, decreaseQuantity, increaseQuantity, clearCart, isEmpty, cartTotal } : HeaderProps) {
+export default function Header({ cart, removeFromCart, decreaseQuantity, increaseQuantity, clearCart } : HeaderProps) {
   
+  // State derivado
+  const isEmpty = cart.length === 0;
+  const cartTotal = useMemo(() => cart.reduce( (total, item) => total + (item.price * item.quantity), 0 ), [cart]);
+
   return (
     <header className="py-5 header">
       <div className="container-xl">
