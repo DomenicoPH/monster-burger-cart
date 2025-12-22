@@ -17,20 +17,6 @@ export const useCart = () => {
       localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
 
-    function addToCart(item : Burger){
-
-      const itemExists = cart.findIndex(burger => burger.id === item.id);
-      if(itemExists >= 0){
-        if(cart[itemExists].quantity >= MAX_ITEMS) return;
-        const updatedCart = [...cart];
-        updatedCart[itemExists].quantity++;
-        setCart(updatedCart);
-      } else {
-        const newItem : CartItem = {...item, quantity: 1};
-        setCart([...cart, newItem])
-      }
-    };
-
     function removeFromCart(id: Burger['id']){
       setCart(prevCart => prevCart.filter(burger => burger.id !== id));
     };
@@ -72,7 +58,6 @@ export const useCart = () => {
     // return
     return {
       cart,
-      addToCart,
       removeFromCart,
       decreaseQuantity,
       increaseQuantity,
