@@ -1,5 +1,5 @@
 import { FaHamburger } from "react-icons/fa";
-import type { CartItem, Burger } from "../types/types";
+import type { CartItem } from "../types/types";
 import { useMemo } from "react";
 import type { CartActions } from "../reducers/cart-reducer";
 import type { ActionDispatch } from "react";
@@ -7,14 +7,12 @@ import type { ActionDispatch } from "react";
 type HeaderProps = {
   cart: CartItem[];
   dispatch: ActionDispatch<[action: CartActions]>
-  decreaseQuantity: (id: Burger['id']) => void;
   clearCart: () => void;
 }
 
 export default function Header({ 
   cart, 
   dispatch, 
-  decreaseQuantity, 
   clearCart 
 } : HeaderProps) {
   
@@ -56,7 +54,7 @@ export default function Header({
                         </tr>
                       </thead>
                       <tbody>
-                        {cart.map((burger) => (
+                        {cart.map(burger => (
                           <tr key={burger.id}>
                             <td>
                               <img
@@ -71,7 +69,7 @@ export default function Header({
                               <button 
                                 type="button" 
                                 className="btn btn-dark"
-                                onClick={() => decreaseQuantity(burger.id)}
+                                onClick={() => dispatch({type: 'decrease-quantity', payload: {id: burger.id}})}
                               >
                                 -
                               </button>
