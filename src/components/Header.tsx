@@ -8,7 +8,6 @@ type HeaderProps = {
   cart: CartItem[];
   dispatch: ActionDispatch<[action: CartActions]>
   decreaseQuantity: (id: Burger['id']) => void;
-  increaseQuantity: (id: Burger['id']) => void;
   clearCart: () => void;
 }
 
@@ -16,7 +15,6 @@ export default function Header({
   cart, 
   dispatch, 
   decreaseQuantity, 
-  increaseQuantity, 
   clearCart 
 } : HeaderProps) {
   
@@ -81,7 +79,7 @@ export default function Header({
                               <button 
                                 type="button" 
                                 className="btn btn-dark"
-                                onClick={() => increaseQuantity(burger.id)}
+                                onClick={() => dispatch({type: 'increase-quantity', payload: {id: burger.id}})}
                               >
                                 +
                               </button>
