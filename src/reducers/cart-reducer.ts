@@ -3,9 +3,9 @@ import type { Burger, CartItem } from "../types/types"
 
 export type CartActions =
     { type: 'add-to-cart', payload: {item : Burger} } |
-    { type: 'remove-from-cart', payload: {item : Burger['id']} } |
-    { type: 'decrease-quantity', payload: {item : Burger['id']} } |
-    { type: 'increase-quantity', payload: {item : Burger['id']} } |
+    { type: 'remove-from-cart', payload: {id : Burger['id']} } |
+    { type: 'decrease-quantity', payload: {id : Burger['id']} } |
+    { type: 'increase-quantity', payload: {id : Burger['id']} } |
     { type: 'clean-cart' }
 
 export type CartState = {
@@ -56,8 +56,10 @@ export const cartReducer = (
         }
 
         if(action.type === 'remove-from-cart'){
+            const updatedCart = state.cart.filter(item => item.id !== action.payload.id);
             return {
-                ...state
+                ...state,
+                cart: updatedCart
             }
         }
 

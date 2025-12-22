@@ -1,16 +1,24 @@
 import { FaHamburger } from "react-icons/fa";
 import type { CartItem, Burger } from "../types/types";
 import { useMemo } from "react";
+import type { CartActions } from "../reducers/cart-reducer";
+import type { ActionDispatch } from "react";
 
 type HeaderProps = {
   cart: CartItem[];
-  removeFromCart: (id: Burger['id']) => void;
+  dispatch: ActionDispatch<[action: CartActions]>
   decreaseQuantity: (id: Burger['id']) => void;
   increaseQuantity: (id: Burger['id']) => void;
   clearCart: () => void;
 }
 
-export default function Header({ cart, removeFromCart, decreaseQuantity, increaseQuantity, clearCart } : HeaderProps) {
+export default function Header({ 
+  cart, 
+  dispatch, 
+  decreaseQuantity, 
+  increaseQuantity, 
+  clearCart 
+} : HeaderProps) {
   
   // State derivado
   const isEmpty = cart.length === 0;
@@ -82,7 +90,7 @@ export default function Header({ cart, removeFromCart, decreaseQuantity, increas
                               <button 
                                 className="btn btn-danger" 
                                 type="button"
-                                onClick={() => removeFromCart(burger.id)}  
+                                onClick={() => dispatch({type: 'remove-from-cart', payload: {id: burger.id}})}  
                               >
                                 X
                               </button>
